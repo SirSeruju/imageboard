@@ -6,3 +6,4 @@ class Threads(SqlAlchemyBase):
 
     id     = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
     parent = sqlalchemy.Column(sqlalchemy.Integer)
+    body   = sqlalchemy.Column(sqlalchemy.String)
