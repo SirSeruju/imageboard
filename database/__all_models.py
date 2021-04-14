@@ -1,2 +1,1 @@
-from . import threads
-from . import messages
+from . import thread
