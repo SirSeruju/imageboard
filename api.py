@@ -14,6 +14,10 @@ get_parser = reqparse.RequestParser()
 get_parser.add_argument('last_id',  required=False, type=int)
 get_parser.add_argument('max_size', required=False, type=int)
 
+post_parser = reqparse.RequestParser()
+post_parser.add_argument('body',   required=False, type=str)
+post_parser.add_argument('parent', required=False, type=str)
+
 
 class ThreadResource(Resource):
     def get(self, thread_id):
@@ -32,3 +36,19 @@ class ThreadResource(Resource):
         threads = list(map(lambda x: x.to_dict(), threads))
         return jsonify({'parent': parent,
                         'threads': threads})
+
+
+class ThreadListResource(Resource):
+    def post(self):
+        args = post_parser.parse_args()
+        session = db_session.create_session()
+        thread = Thread()
+        if args['body']:
+            thread.body = args['body']
+        if args['parent']:
+            thread.parent = args['parent']
+        session.add(thread)
+        session.commit()
+        return jsonify({'id': thread.id})
+
+
