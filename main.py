@@ -10,7 +10,7 @@ api.add_resource(ThreadResource, '/api/threads/<int:thread_id>')
 api.add_resource(ThreadListResource, '/api/threads')
 
 def main():
-    global_init("threads.db")
+    global_init("database/threads.db")
     app.run()
 
 if __name__ == '__main__':
