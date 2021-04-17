@@ -1,8 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<p>{{ parent.id }}</p>
-	{% for thread in threads %}
-		<p>{{ thread.id }}</p>
-	{% endfor %}
+	<div class="content-centre">
+		<div class="main-thread">
+			<a class="thread-id" href="/{{ parent.id }}">
+				{{ parent.id }}
+			</a></br>
+			<div class="thread-body">
+				{{ parent.body }}
+			</div>
+
+			{% for thread in threads %}
+				<div class="thread">
+					<a class="thread-id" href="/{{ thread.id }}">
+						{{ thread.id }}
+					</a></br>
+					<div class="thread-body">
+						{{ thread.body }}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}

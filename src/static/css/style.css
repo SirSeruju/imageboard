@@ -1,0 +1,20 @@
+.content-centre {
+	margin-left: 5%;
+	margin-right: 5%;
+}
+.main-thread {
+	margin: 10px;
+	padding: 10px;
+	background-color: #DDDDDD
+}
+.thread {
+	border: 1px;
+	margin: 10px;
+	padding: 10px;
+	background-color: #CCCCCC;
+}
+.thread-id {
+}
+.thread-body {
+	margin-left: 10px;
+}
