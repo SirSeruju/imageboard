@@ -18,7 +18,7 @@ def getThread(thread_id):
     if not parent:
         return make_response(jsonify({"error": "Not found"}), 404)
     threads = db_sess.query(Thread).filter(Thread.parent == thread_id).all()
-    print(len(threads))
+    db_sess.close()
     return render_template("index.html", parent=parent, threads=threads)
 
 def main():

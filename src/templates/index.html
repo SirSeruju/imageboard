@@ -2,12 +2,14 @@
 
 {% block content %}
 	<div class="content-centre">
-		<div class="main-thread">
-			<a class="thread-id" href="/{{ parent.id }}">
-				{{ parent.id }}
-			</a></br>
+		<div class="thread">
+			<div class="thread-info">
+				<a class="thread-id" href="/{{ parent.id }}">
+					{{ parent.id }}
+				</a>
+			</div>
 			<div class="thread-body">
-				{{ parent.body }}
+				{% print(parent.body) %}
 			</div>
 
 			{% for thread in threads %}
