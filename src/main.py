@@ -6,6 +6,7 @@ from database.thread import Thread
 
 app = Flask(__name__)
 api = Api(app)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 api.add_resource(ThreadResource, '/api/threads/<int:thread_id>')
 api.add_resource(ThreadListResource, '/api/threads')
