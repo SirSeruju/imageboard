@@ -2,26 +2,16 @@
 
 {% block content %}
 	<div class="content-centre">
-		<div class="thread">
+		<div class="thread" id="thread-{{ parent.id }}">
 			<div class="thread-info">
 				<a class="thread-id" href="/{{ parent.id }}">
 					{{ parent.id }}
 				</a>
 			</div>
 			<div class="thread-body">
-				{% print(parent.body) %}
+				{{ parent.body }}
 			</div>
-
-			{% for thread in threads %}
-				<div class="thread">
-					<a class="thread-id" href="/{{ thread.id }}">
-						{{ thread.id }}
-					</a></br>
-					<div class="thread-body">
-						{{ thread.body }}
-					</div>
-				</div>
-			{% endfor %}
+			<input id="thread-button-{{ parent.id }}" type="button" value="Replies" onclick="getChildThreads({{ parent.id }});" />
 		</div>
 	</div>
 {% endblock %}
