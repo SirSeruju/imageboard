@@ -1,19 +1,64 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
 .content-centre {
 	margin-left: 5%;
 	margin-right: 5%;
 }
 .thread {
 	border: 1px solid black;
-	margin: 10px;
+	margin: 20px;
 	padding: 10px;
 	background-color: #CCCCCC;
+	display: block;
 }
 .thread-info {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	border: 1px solid black;
+	width: 100%;
 }
+.thread-info li {
+	display: inline;
+}
+.thread-info a {
+	padding: 5px 10px;
+	text-decoration: none;
+	font-weight: bold;
+	display: inline-block;
+	width: auto;
+}
+.thread-info a:hover {
+  background-color: #EEEEEE;
+}
+
 .thread-id {
+	padding: 0;
+	margin: 0;
+	text-align: left;
+	width: 80%;
+	display: inline-block;
 }
 .thread-body {
+	padding 10px;
 	margin: 10px;
-	padding: 10px;
 	border-top: 1px solid black;
+	display: block;
+}
+.thread-replies {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	width: 10%;
+	display: inline-block;
+}
+.thread-reply {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	width: 10%;
+	display: inline-block;
 }

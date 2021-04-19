@@ -3,15 +3,14 @@
 {% block content %}
 	<div class="content-centre">
 		<div class="thread" id="thread-{{ parent.id }}">
-			<div class="thread-info">
-				<a class="thread-id" href="/{{ parent.id }}">
-					#{{ parent.id }}
-				</a>
-			</div>
+			<ul class="thread-info">
+				<li><a href="/{{ parent.id }}">#{{ parent.id }}</a></li>
+				<li><a href="#" onclick="">◄</a></li>
+				<li><a href="#" onclick="changeChildThreads(this, {{ parent.id }});">▼</a></li>
+			</ul>
 			<div class="thread-body">
 				{{ parent.body }}
 			</div>
-			<input id="thread-button-{{ parent.id }}" type="button" value="Replies" onclick="getChildThreads({{ parent.id }});" />
 		</div>
 	</div>
 {% endblock %}

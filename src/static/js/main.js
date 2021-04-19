@@ -1,10 +1,17 @@
-
-function getChildThreads(threadId) {
+function changeChildThreads(button, threadId) {
 	var mainThread = document.getElementById("thread-" + threadId);
-	mainThread.removeChild(document.getElementById("thread-button-" + threadId));
 	var threads = JSON.parse(httpGet("api/threads/" + threadId));
-	for(var i = 0; i < threads.threads.length; i++) {
-		mainThread.innerHTML += getThread(threads.threads[i]);
+	if (button.text == "▼") {
+		button.text = "▲";
+		for(var i = 0; i < threads.threads.length; i++) {
+			mainThread.innerHTML += getThread(threads.threads[i]);
+		}
+	} else {
+		button.text = "▼";
+		for(var i = 0; i < threads.threads.length; i++) {
+			var childThread = document.getElementById("thread-" + threads.threads[i].id);
+			mainThread.removeChild(childThread);
+		}
 	}
 }
 
@@ -14,11 +21,12 @@ function getThread(thread) {
 			<a class="thread-id" href="/${thread.id}">
 				#${thread.id} 
 			</a>
+			<a class="thread-reply"   href="#" onclick="">◄</a>
+			<a class="thread-replies" href="#" onclick="changeChildThreads(this, ${thread.id});" />▼</a>
 		</div>
 	<div class="thread-body">
 		${thread.body}
 	</div>
-	<input id="thread-button-${thread.id}" type="button" value="Replies" onclick="getChildThreads(${thread.id});" />
 	</div>`;
 
 }
