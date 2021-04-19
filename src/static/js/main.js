@@ -12,7 +12,7 @@ function getThread(thread) {
 	return `<div class="thread" id="thread-${thread.id}">
 		<div class="thread-info">
 			<a class="thread-id" href="/${thread.id}">
-				${thread.id} 
+				#${thread.id} 
 			</a>
 		</div>
 	<div class="thread-body">
