@@ -17,13 +17,11 @@ function changeChildThreads(button, threadId) {
 
 function getThread(thread) {
 	return `<div class="thread" id="thread-${thread.id}">
-		<div class="thread-info">
-			<a class="thread-id" href="/${thread.id}">
-				#${thread.id} 
-			</a>
-			<a class="thread-reply"   href="#" onclick="">◄</a>
-			<a class="thread-replies" href="#" onclick="changeChildThreads(this, ${thread.id});" />▼</a>
-		</div>
+	<ul class="thread-head">
+		<li><a href="/${thread.id}">#${thread.id}</a></li>
+		<li><a href="#" onclick="">◄</a></li>
+		<li><a href="#" onclick="changeChildThreads(this, ${thread.id});">▼</a></li>
+	</ul>
 	<div class="thread-body">
 		${thread.body}
 	</div>

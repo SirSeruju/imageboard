@@ -3,7 +3,7 @@
 {% block content %}
 	<div class="content-centre">
 		<div class="thread" id="thread-{{ parent.id }}">
-			<ul class="thread-info">
+			<ul class="thread-head">
 				<li><a href="/{{ parent.id }}">#{{ parent.id }}</a></li>
 				<li><a href="#" onclick="">◄</a></li>
 				<li><a href="#" onclick="changeChildThreads(this, {{ parent.id }});">▼</a></li>
