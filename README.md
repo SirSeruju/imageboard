@@ -1,2 +1,2 @@
-# imageboard
-Python flask imageboard
+# textboard
+Python flask textboard
