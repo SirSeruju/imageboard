@@ -9,31 +9,33 @@
 }
 .thread {
 	display: block;
-	margin-left: 19px;
+	margin-left: 20px;
 }
 .thread-head {
-	background-color: #CCCCCC;
+	background-color: #EEE;
 	list-style-type: none;
 	border: 1px solid black;
 	margin: -1px;
 	width: 100%;
+	font-size: 0;
 }
-.thread-head li {
-	display: inline;
-}
-.thread-head a {
-	padding: 5px 10px;
-	text-decoration: none;
-	font-weight: bold;
+.thread-head div {
+	border: 1px solid black;
+	margin: -1px;
+	margin-right: 0;
+	padding: 8px 10px;
 	display: inline-block;
-	width: auto;
+	font-size: 15px;
+	font-weight: bold;
+	text-decoration: none;
 }
-.thread-head a:hover {
-  background-color: #EEEEEE;
+.thread-head div:hover {
+	cursor: pointer;
+	background-color: #EEEEEE;
 }
 
 .thread-body {
-	background-color: #CCCCCC;
+	background-color: #DDD;
 	padding: 10px;
 	display: block;
 	border: 1px solid black;
