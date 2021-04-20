@@ -1,13 +1,13 @@
 function changeChildThreads(button, threadId) {
 	var mainThread = document.getElementById("thread-" + threadId);
 	var threads = JSON.parse(httpGet("api/threads/" + threadId));
-	if (button.innerText == "▼") {
-		button.innerText = "▲";
+	if (button.innerHTML == '<img src="static/img/arrow-down.svg">') {
+		button.innerHTML = '<img src="static/img/arrow-up.svg">';
 		for(var i = 0; i < threads.threads.length; i++) {
 			mainThread.innerHTML += getThread(threads.threads[i]);
 		}
 	} else {
-		button.innerText = "▼";
+		button.innerHTML = '<img src="static/img/arrow-down.svg">';
 		for(var i = 0; i < threads.threads.length; i++) {
 			var childThread = document.getElementById("thread-" + threads.threads[i].id);
 			mainThread.removeChild(childThread);
@@ -18,9 +18,9 @@ function changeChildThreads(button, threadId) {
 function getThread(thread) {
 	return `<div class="thread" id="thread-${thread.id}">
 		<div class="thread-head">
-			<div onclick="window.location.href = '/${thread.id}';">#${thread.id}</div>
-			<div onclick="">◄</div>
-			<div onclick="changeChildThreads(this, ${thread.id})">▼</div>
+			<div class="thread-head-button" onclick="window.location.href = '/${thread.id}';"><div>#${thread.id}</div></div>
+			<div class="thread-head-button" onclick=""><img src="static/img/arrow-left.svg"></div>
+			<div class="thread-head-button" onclick="changeChildThreads(this, ${thread.id})"><img src="static/img/arrow-down.svg"></div>
 		</div>
 		<div class="thread-body">
 			${thread.body }

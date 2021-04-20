@@ -12,9 +12,9 @@
 	<div class="content-centre">
 		<div class="thread" id="thread-{{ parent.id }}">
 			<div class="thread-head">
-				<div onclick="window.location.href = '/{{ parent.id }}';">#{{ parent.id }}</div>
-				<div onclick="">◄</div>
-				<div onclick="changeChildThreads(this, {{ parent.id }})">▼</div>
+				<div class="thread-head-button" onclick="window.location.href = '/{{ parent.id }}';"><div>#{{ parent.id }}</div></div>
+				<div class="thread-head-button" onclick=""><img src="static/img/arrow-left.svg"></div>
+				<div class="thread-head-button" onclick="changeChildThreads(this, {{ parent.id }})"><img src="static/img/arrow-down.svg"></div>
 			</div>
 			<div class="thread-body">
 				{{ parent.body }}
