@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+	<div id="thread-reply">
+		<textarea id="thread-reply-message"></textarea>
+		<div class="thread-reply-buttons">
+			<div>↷</div>
+			<div>×</div>
+		</div>
+	</div>
 	<div class="content-centre">
 		<div class="thread" id="thread-{{ parent.id }}">
 			<div class="thread-head">
