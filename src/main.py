@@ -22,13 +22,16 @@ def getThread(thread_id):
     db_sess.close()
     return render_template("thread.html", parent=parent, threads=threads)
 
+
 @app.route("/")
 def index():
     return getThread(0)
 
+
 def main():
     global_init("threads.db")
     app.run()
+
 
 if __name__ == '__main__':
     main()
