@@ -38,4 +38,3 @@ function httpGet(theUrl) {
 	xmlHttp.send();
 	return xmlHttp.response;
 }
-
