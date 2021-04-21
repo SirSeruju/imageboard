@@ -2,11 +2,11 @@
 
 {% block content %}
 	<div id="thread-reply">
-		<textarea id="thread-reply-body"></textarea>
-		<div class="thread-reply-buttons">
-			<div>↷</div>
-			<div>×</div>
+		<div id="thread-reply-header">
+			<div id="thread-reply-close" onclick="document.getElementById('thread-reply').style.display = 'none'">
+			</div>
 		</div>
+		<textarea id="thread-reply-body"></textarea>
 	</div>
 	<div class="content-centre">
 		<div class="thread" id="thread-{{ parent.id }}">
