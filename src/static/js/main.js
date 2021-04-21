@@ -28,6 +28,10 @@ function getThread(thread) {
 	</div>`;
 }
 
+function showThreadReply() {
+	document.getElementById("thread-reply").style.display = "block";
+}
+
 function httpGet(theUrl) {
 	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.open("GET", theUrl, false);
