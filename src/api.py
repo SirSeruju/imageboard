@@ -43,9 +43,9 @@ class ThreadListResource(Resource):
         args = post_parser.parse_args()
         session = db_session.create_session()
         thread = Thread()
-        if args['body']:
+        if args['body'] is not None:
             thread.body = args['body']
-        if args['parent']:
+        if args['parent'] is not None:
             thread.parent = args['parent']
         session.add(thread)
         session.commit()

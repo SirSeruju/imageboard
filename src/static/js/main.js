@@ -4,17 +4,17 @@ function main(){
 
 function changeChildThreads(button, threadId) {
 	var mainThread = document.getElementById("thread-" + threadId);
-	var threads = JSON.parse(httpGet("api/threads/" + threadId));
 	if (button.innerHTML == '<img src="static/img/arrow-down.svg">') {
 		button.innerHTML = '<img src="static/img/arrow-up.svg">';
-		for(var i = 0; i < threads.threads.length; i++) {
-			mainThread.innerHTML += getThread(threads.threads[i]);
+		var threads = JSON.parse(httpGet("api/threads/" + threadId)).threads.sort((a, b) => a.id < b.id);
+		for(var i = 0; i < threads.length; i++) {
+			mainThread.innerHTML += getThread(threads[i]);
 		}
 	} else {
 		button.innerHTML = '<img src="static/img/arrow-down.svg">';
-		for(var i = 0; i < threads.threads.length; i++) {
-			var childThread = document.getElementById("thread-" + threads.threads[i].id);
-			mainThread.removeChild(childThread);
+		var threads = document.getElementById("thread-" + threadId).querySelectorAll(".thread");
+		for(var i = 0; i < threads.length; i++) {
+			mainThread.removeChild(threads[i]);
 		}
 	}
 }
@@ -46,6 +46,23 @@ function httpGet(theUrl) {
 	xmlHttp.open("GET", theUrl, false);
 	xmlHttp.send();
 	return xmlHttp.response;
+}
+
+function reply() {
+	const parentId = document.getElementById("thread-reply-header-id").innerHTML;
+	const replyBody = document.getElementById("thread-reply-body").value;
+	fetch("api/threads", {
+		method: "POST",
+		headers: {
+			'Accept': 'application/json, text/plain, */*',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			"parent": parseInt(parentId),
+			"body": replyBody
+		})
+	});
+	document.getElementById("thread-reply").style.display = "none";
 }
 
 function dragElement(elmnt) {
