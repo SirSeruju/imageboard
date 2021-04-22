@@ -19,12 +19,17 @@ function changeChildThreads(button, threadId) {
 	}
 }
 
+function threadReply(threadId) {
+	document.getElementById("thread-reply-header-id").innerHTML = threadId;
+	document.getElementById("thread-reply").style.display = "block";
+}
+
 function getThread(thread) {
 	return `<div class="thread" id="thread-${thread.id}">
 		<div class="thread-head">
 			<div class="thread-head-button" onclick="window.location.href = '/${thread.id}';"><div>#${thread.id}</div></div>
 			<div class="thread-head-button" onclick="changeChildThreads(this, ${thread.id})"><img src="static/img/arrow-down.svg"></div>
-			<div class="thread-head-button" onclick=""><img src="static/img/arrow-right.svg"></div>
+			<div class="thread-head-button" onclick="threadReply(${thread.id})"><img src="static/img/arrow-right.svg"></div>
 		</div>
 		<div class="thread-body">
 			${thread.body }

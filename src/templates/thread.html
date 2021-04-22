@@ -3,17 +3,26 @@
 {% block content %}
 	<div id="thread-reply">
 		<div id="thread-reply-header">
+			<div style="display: inline-block;">
+				<img width=16px height=16px src="static/img/arrow-right.svg">
+			</div>
+			<div id="thread-reply-header-id">
+			</div>
 			<div id="thread-reply-close" onclick="document.getElementById('thread-reply').style.display = 'none'">
+				<img width=16px height=16px src="static/img/cancel.svg">
 			</div>
 		</div>
 		<textarea id="thread-reply-body"></textarea>
+		<div id="thread-reply-accept">
+			<img width=16px height=16px style="display: block; margin: auto;" src="static/img/accept.svg">
+		</div>
 	</div>
 	<div class="content-centre">
 		<div class="thread" id="thread-{{ parent.id }}">
 			<div class="thread-head">
 				<div class="thread-head-button" onclick="window.location.href = '/{{ parent.id }}';"><div>#{{ parent.id }}</div></div>
 				<div class="thread-head-button" onclick="changeChildThreads(this, {{ parent.id }})"><img src="static/img/arrow-down.svg"></div>
-				<div class="thread-head-button" onclick=""><img src="static/img/arrow-right.svg"></div>
+				<div class="thread-head-button" onclick="threadReply({{ parent.id }})"><img src="static/img/arrow-right.svg"></div>
 			</div>
 			<div class="thread-body">
 				{{ parent.body }}
