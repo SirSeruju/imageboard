@@ -14,7 +14,8 @@ function changeChildThreads(button, threadId) {
 		button.innerHTML = '<img src="static/img/arrow-down.svg">';
 		var threads = document.getElementById("thread-" + threadId).querySelectorAll(".thread");
 		for(var i = 0; i < threads.length; i++) {
-			mainThread.removeChild(threads[i]);
+			if (threads[i].parentNode === mainThread)
+				mainThread.removeChild(threads[i]);
 		}
 	}
 }
