@@ -15,8 +15,8 @@ get_parser.add_argument('last_id',  required=False, type=int)
 get_parser.add_argument('max_size', required=False, type=int)
 
 post_parser = reqparse.RequestParser()
-post_parser.add_argument('body',   required=False, type=str)
-post_parser.add_argument('parent', required=False, type=str)
+post_parser.add_argument('body',   required=True, type=str)
+post_parser.add_argument('parent', required=False, type=int)
 
 
 class ThreadResource(Resource):
@@ -43,9 +43,9 @@ class ThreadListResource(Resource):
         args = post_parser.parse_args()
         session = db_session.create_session()
         thread = Thread()
-        if args['body']:
+        if args['body'] is not None:
             thread.body = args['body']
-        if args['parent']:
+        if args['parent'] is not None:
             thread.parent = args['parent']
         session.add(thread)
         session.commit()
