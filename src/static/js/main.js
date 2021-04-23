@@ -37,7 +37,8 @@ function getThread(thread) {
 	</div>`;
 }
 
-function showThreadReply() {
+function showNewThreadForm() {
+	document.getElementById("thread-reply-header-id").innerHTML = "New thread";
 	document.getElementById("thread-reply").style.display = "block";
 }
 
@@ -48,10 +49,8 @@ function httpGet(theUrl) {
 	return xmlHttp.response;
 }
 
-function reply() {
-	const parentId = document.getElementById("thread-reply-header-id").innerHTML;
-	const replyBody = document.getElementById("thread-reply-body").value;
-	fetch("api/threads", {
+async function postThread(parentId, body) {
+	return fetch("api/threads", {
 		method: "POST",
 		headers: {
 			'Accept': 'application/json, text/plain, */*',
@@ -59,9 +58,28 @@ function reply() {
 		},
 		body: JSON.stringify({
 			"parent": parseInt(parentId),
-			"body": replyBody
+			"body": body
 		})
-	});
+	}).then(
+		function (response) {return response.json();}
+	).then(
+		function (json) {return json.id;}
+	);
+
+}
+
+async function reply() {
+	var parentId = document.getElementById("thread-reply-header-id").innerHTML;
+	if (!/^\d+$/.test(parentId)) {
+		parentId = ""
+	}
+
+	const replyBody = document.getElementById("thread-reply-body").value;
+	var threadId = await postThread(parentId, replyBody);
+	if (parentId === "") {
+		document.location.href = '/' + threadId;
+		return;
+	}
 	document.getElementById("thread-reply").style.display = "none";
 }
 
